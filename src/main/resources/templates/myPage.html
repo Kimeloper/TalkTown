@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/myPage.css";>
+</head>
+<body>
+    <header class="header">
+        <nav class="header_bar">
+            <a href="/main" class="logo"><img src="/img/talkTown.png"></a>
+            <div class="header_icons">
+                <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
+                <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
+                <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
+                    <button type="submit" class="logout" title="logout">
+                        <img src="/img/logout.png">
+                    </button>
+                </form>
+            </div>
+        </nav>
+        <nav class="menu_bar">
+            <ul>
+                <li><a href="/boards" >Community</a></li>
+                <li><a href="/notices">Notice</a></li>
+                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="member_information">
+            <h1 style="border-bottom:2px solid black; padding:10px; font-weight: bold;">Information</h1>
+            <div class="information_form">
+                <div class="information_items">
+                    <span>Nickname</span>
+                    <div class="information_value" th:text="${member.author}">홍길동</div>
+                </div>
+
+                <div class="information_items">
+                    <span>Email</span>
+                    <div class="information_value" th:text="${member.email}">gildong@board.com</div>
+                </div>
+
+                <div class="information_items">
+                    <span>Role</span>
+                    <div class="information_value" th:text="${member.role}">Member</div>
+                </div>
+
+                <div class="information_items">
+                    <span>Date</span>
+                    <div class="information_value" th:text="|${#temporals.format(member.registeredAt, 'yyyy-MM-dd')}|">2025-02-13</div>
+                </div>
+            </div>
+            <div class="deleteAccount">
+                <button type="button" class="deleteAccount_btn" id="deleteAccount_btn" >Delete your account</button>
+                <div class="checkPasswordForm" style="height:auto; display:none; margin-top:10px; ">
+                    <input type="password" id="checkPassword" style=" width:300px; height:40px;border: 2px solid rgb(193,193,193); border-radius: 5px; display: left;" placeholder="비밀번호를 입력하세요.">
+                    <button class="okDelete_btn" id="okDelete_btn" style="width:70px; height:40px; background-color:rgb(190, 190, 190); color: white; border-radius: 5px; border:none; font-weight: bold; cursor:pointer; margin-left: 3px;">Ok</button>
+                    <button class="cancel_btn"  id="cancel_btn" style="width:70px; height:40px; background-color:rgb(190, 190, 190); color: white; border-radius: 5px; border:none; font-weight: bold; cursor:pointer; margin-left: 3px;">Cancel</button>
+                    <br>
+    <!--                <span>※ 주의! 작성하신 글과 댓글은 탈퇴시 자동으로 삭제되지 않습니다. 탈퇴 전 모두 삭제해주세요😢</span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <img src="/img/talkTown.png">
+            <p>© 2025 TalkTown. All rights reserved</p>
+        </div>
+    </footer>
+<script src="/js/myPage.js"></script>
+<script src="/js/withdraw.js"></script>
+</body>
+</html>

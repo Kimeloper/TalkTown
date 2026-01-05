@@ -1,0 +1,12 @@
+--INSERT INTO board (author, title, content, views, created_at) VALUES ('작성자1', '첫번째 게시물', '내용 1', 0, NOW())
+--INSERT INTO board (author, title, content, views, created_at) VALUES ('작성자2', '두번째 게시물', '내용 2', 0, NOW())
+--INSERT INTO board (author, title, content, views, created_at) VALUES ('작성자3', '세번째 게시물', '내용 3', 0, NOW())
+--INSERT INTO board (author, title, content, views, created_at) VALUES ('작성자4', '네번째 게시물', '내용 4', 0, NOW())
+--INSERT INTO board (author, title, content, views, created_at) VALUES ('작성자5', '다섯번째 게시물', '내용 5', 0, NOW())
+--
+--INSERT INTO notice (author, title, content, views, created_at) VALUES ('관리자', '첫번째 공지사항 ', '글을 쓰실때 바른말 고운말을 사용해주시기 바랍니다.', 0, NOW())
+--INSERT INTO notice (author, title, content, views, created_at) VALUES ('관리자', '두번째 공지사항 ', '글을 쓰실때 바른말 고운말을 사용해주시기 바랍니다.', 0, NOW())
+--INSERT INTO notice (author, title, content, views, created_at) VALUES ('관리자', '세번째 공지사항 ', '글을 쓰실때 바른말 고운말을 사용해주시기 바랍니다.', 0, NOW())
+--
+--INSERT INTO comments (board_id, author, content, created_at) VALUES (1, '글쓴이 2', '댓글 1', NOW())
+--INSERT INTO comments (board_id, author, content, created_at) VALUES (1, '글쓴이 3', '댓글 2', NOW())

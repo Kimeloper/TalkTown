@@ -1,0 +1,208 @@
+/* 로그인 */
+.container{
+    width:100%;
+    max-width:1200px;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.loginPart{
+    width:100%;
+    max-width:340px;
+    height:500px;
+    padding:20px;
+}
+
+.logo{
+    width:180px;
+    height:80px;
+    display:block;
+    margin:0 auto;
+}
+
+.email{
+    margin-top:20px;
+}
+
+.email input{
+    width:100%;
+    max-width: 300px;
+    height:40px;
+    padding:10px;
+    margin:5px auto;
+    border: 2px solid rgb(193,193,193);
+}
+
+.password{
+    margin-top:20px;
+}
+
+.password input{
+    width:100%;
+    max-width: 300px;
+    height:40px;
+    padding:10px;
+    margin:5px auto;
+    border: 2px solid rgb(193,193,193);
+}
+
+.input_label{
+    font-weight: bold;
+}
+
+/* 버튼 */
+
+.submit_btn{
+    width:300px;
+    height:50px;
+    padding:10px;
+    margin:20px auto;
+    background-color:rgb(190, 190, 190);
+    border:none;
+    border-radius: 15px;
+    color:white;
+    font-weight:bold;
+}
+
+.submit_btn:hover{
+    color:rgb(240,240,240);
+    background-color:rgb(170, 170, 170);
+    cursor: pointer;
+}
+
+.question{
+    text-align:center;
+    margin-top:15px;
+    width:100%;
+    max-width: 300px;
+}
+
+.question a{
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+
+
+/* 회원가입 */
+.container{
+    width:100%;
+    max-width:1200px;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.signupPart{
+    width:100%;
+    max-width:340px;
+    height:500px;
+    padding:20px;
+}
+
+.logo{
+    width:180px;
+    height:80px;
+    display:block;
+    margin:0 auto;
+}
+
+.inputBox{
+    margin-top:20px;
+}
+
+.inputBox input {
+    width:100%;
+    max-width: 300px;
+    min-width:300px;
+    height:40px;
+    padding:10px;
+    margin:5px auto;
+    border: 2px solid rgb(193,193,193);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.inputBox input.valid {
+    border-color: rgb(0,180,0);
+}
+
+.inputBox input.invalid {
+    border-color: rgb(230,90,90);
+}
+
+.inputBox input.valid:focus {
+    border-color: rgb(0,180,0);
+}
+
+.inputBox input.invalid:focus {
+    border-color: rgb(230,90,90);
+}
+
+.input_label{
+    font-weight: bold;
+}
+
+.random_name{
+    display: flex;
+    width: 100%;
+    gap:5px;
+}
+
+.random_name input{
+    width:100%;
+    max-width: 300px;
+    height:40px;
+    padding:10px;
+    margin:5px auto;
+}
+
+.dice{
+    width:30px;
+    height:30px;
+    margin:auto;
+}
+
+.emailError{
+    display:block;
+    color:rgb(230,90,90);
+    font-size:10pt;
+    font-weight:bold;
+}
+
+.authorError{
+    display:block;
+    color:rgb(230,90,90);
+    font-size:10pt;
+    font-weight:bold;
+}
+
+.passwordError{
+    display:block;
+    color:rgb(230,90,90);
+    font-size:10pt;
+    font-weight:bold;
+}
+
+/* 버튼 */
+.submit_btn{
+    width:300px;
+    height:50px;
+    padding:10px;
+    margin:20px auto;
+    background-color:rgb(190, 190, 190);
+    border:none;
+    border-radius: 15px;
+    color:white;
+    font-weight:bold;
+}
+
+.submit_btn:hover{
+   color:rgb(240,240,240);
+   background-color:rgb(170, 170, 170);
+   cursor: pointer;
+}

@@ -1,0 +1,183 @@
+.body{
+   height: 100%;
+}
+
+/* 헤더 */
+
+.header{
+    position: fixed;
+    width: 100%;
+    height: 130px;
+}
+
+.header_bar{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 60px;
+    margin: auto;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.logo img{
+    width:130px;
+    height:60px;
+}
+
+.header_icons{
+    margin:auto 0;
+    display: flex;
+}
+
+.header_icons img{
+    width:40px;
+    height:40px;
+    cursor: pointer;
+}
+
+.logout_form{
+    margin-left:auto;
+}
+
+.logout {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+}
+
+
+/* 메뉴바 */
+.menu_bar{
+    width: 100%;
+    height:50px;
+    margin:auto;
+    background-color: rgb(50, 50, 50);
+}
+
+.menu_bar ul{
+    display:flex;
+    height:100%;
+    list-style: none;
+    color:white;
+    font-size: 15pt;
+    justify-content: center;
+    padding:0;
+}
+
+.menu_bar ul li{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_bar ul li a{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:aliceblue;
+    font-weight: bold;
+}
+
+.menu_bar ul li a:hover{
+    background-color: rgb(68, 114,196);
+    cursor:pointer;
+}
+
+/* 본문 */
+.container{
+    width:100%;
+    max-width: 1200px;
+    height:auto;
+    margin:auto;
+    padding-top:130px;
+}
+
+.member_information{
+    width:80%;
+    margin:auto;
+    height:auto;
+}
+
+.information_form{
+    font-size:15pt;
+    font-weight:bold;
+    padding:10px;
+}
+
+ .information_items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .information_items span {
+    width: 150px;
+    height: 40px;
+  }
+
+ .information_value {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    font-size: 14pt;
+    font-weight: normal;
+ }
+
+ .checkPasswordForm{
+
+ }
+
+/* deleteAccountButton*/
+.deleteAccount{
+  width:80%;
+  margin:10px 0px 30px 0px;
+
+}
+
+.deleteAccount_btn{
+  width:200px;
+  height:40px;
+  color:red;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
+.deleteAccount_btn:hover{
+  background-color: red;
+  color:white;
+  cursor:pointer;
+}
+
+/* 푸터 */
+.footer{
+    width:100%;
+    height:200px;
+    margin:auto;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(50,50,50);
+}
+
+.footer img{
+    width:150px;
+    height:70px;
+    margin-right: 50px;
+}
+
+.footer p{
+    text-align:center;
+    color:white;
+}
