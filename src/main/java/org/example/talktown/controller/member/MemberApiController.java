@@ -16,38 +16,36 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 public class MemberApiController {
 
     private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final NicknameService nicknameService;
     private final JwtUtil jwtUtil;
-    private final AuthenticationManager authenticationManager;
     private final RefreshTokenRepository refreshTokenRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @PostMapping("/api/login")
-    public String login(LoginRequest loginRequest,HttpServletResponse httpServletResponse) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest,HttpServletResponse httpServletResponse) {
 
         Member member = memberService.findByEmail(loginRequest.getEmail());
 
-        if (!bCryptPasswordEncoder.matches(loginRequest.getPassword(),member.getPassword()) || member == null) {
-            return "redirect:/login?error";
+        if (member == null || !bCryptPasswordEncoder.matches(loginRequest.getPassword(), member.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("아이디 또는 비밀번호가 일치하지 않습니다.");
         }
 
         String accessToken = jwtUtil.generateToken(member, Duration.ofHours(1));
@@ -72,11 +70,17 @@ public class MemberApiController {
         httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
         httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
-        return "redirect:/main";
+        Map<String, Object> response = new LinkedHashMap<>();
+
+        response.put("status", 200);
+        response.put("message", "정상적으로 로그인이 되었습니다.");
+        response.put("accessToken", accessToken);
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/api/logout")
-    public String logout(HttpServletResponse httpServletResponse) {
+    public ResponseEntity<Map<String, Object>> logout(HttpServletResponse httpServletResponse) {
 
         // 쿠키 삭제
         ResponseCookie deleteAccess = ResponseCookie.from("accessToken", "")
@@ -96,7 +100,11 @@ public class MemberApiController {
         httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, deleteAccess.toString());
         httpServletResponse.addHeader(HttpHeaders.SET_COOKIE, deleteRefresh.toString());
 
-        return "redirect:/main";
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", 200);
+        response.put("message", "정상적으로 로그아웃이 되었습니다.");
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/member")

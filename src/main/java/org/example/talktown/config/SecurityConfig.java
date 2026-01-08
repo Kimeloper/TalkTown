@@ -1,5 +1,6 @@
 package org.example.talktown.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.example.talktown.config.jwt.JwtUtil;
 import org.example.talktown.repository.MemberRepository;
@@ -48,9 +49,8 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
-                                .requestMatchers("/myPage").authenticated()
+                        .requestMatchers("/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
+                        .requestMatchers("/myPage").authenticated()
                         .requestMatchers("/adminPage").hasRole("ADMIN")
                         .requestMatchers("/newNotice").hasRole("ADMIN")
                         .requestMatchers("/api/newBoard").hasAnyRole("ADMIN", "MEMBER")
@@ -59,12 +59,14 @@ public class SecurityConfig {
                         .requestMatchers("/api/nickname").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtFilter(jwtUtil, memberRepository),UsernamePasswordAuthenticationFilter.class);
+
         http
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint((request, response, authException) -> {
-                            response.sendRedirect("/login");
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                            response.setContentType("application/json; charset=UTF-8");
+                            response.getWriter().write("{\"status\":\"401\",\"error\":\"Unauthorized\", \"message\":\"로그인을 해주세요.\"}");
                         })
-
                 );
 
         return http.build();

@@ -14,7 +14,7 @@
                 <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
                 <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
                 <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
-                    <button type="submit" class="logout" title="logout">
+                    <button type="submit" class="logout" title="logout" id="logout_btn">
                         <img src="/img/logout.png">
                     </button>
                 </form>
@@ -83,5 +83,6 @@
             <p>© 2025 TalkTown. All rights reserved</p>
         </div>
     </footer>
+<script src="/js/logout.js"></script>
 </body>
 </html>
