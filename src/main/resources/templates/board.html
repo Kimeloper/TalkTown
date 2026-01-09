@@ -61,9 +61,9 @@
                         <div class="comment_content" th:text="${comment.content}">dd</div>
                         <textarea class="comment_edit"></textarea>
                         <div class="comment_btn">
-                            <button type="button" class="comment_update_btn" th:if="${comment.author == #authentication.name}" style="">수정</button>
-                            <button type="button" class="comment_delete_btn" th:if="${comment.author == #authentication.name or #authorization.expression('hasRole(''ADMIN'')')}" style="">삭제</button>
-                            <button type="button" class="comment_update_save_btn" th:if="${comment.author == #authentication.name}" style="">저장</button>
+                            <button type="button" class="comment_update_btn" th:if="${comment.author == #authentication.name}">수정</button>
+                            <button type="button" class="comment_delete_btn" th:if="${comment.author == #authentication.name or #authorization.expression('hasRole(''ADMIN'')')}">삭제</button>
+                            <button type="button" class="comment_update_save_btn" th:if="${comment.author == #authentication.name}">저장</button>
                         </div>
                     </div>
                 </div>

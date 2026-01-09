@@ -284,34 +284,40 @@
 }
 
 .comment_btn{
+
     display: flex;
-    justify-content:
-    flex-end;
+    justify-content:flex-end;
+    gap:3px;
+    margin-bottom: 5px;
 }
 
 .comment_update_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
+    font-size:10pt;
+
 }
 
 .comment_delete_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
+    font-size:10pt;
 }
 
 .comment_update_save_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
-    display:none;
+    font-size:10pt;
+    display: none;
 }
 
 /* 푸터 */
@@ -612,7 +618,8 @@
 
 /* 댓글 버튼 */
 .write_button{
-    display: flex; justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .comment_create_btn{
@@ -628,34 +635,43 @@
 }
 
 .comment_btn{
+
     display: flex;
-    justify-content:
-    flex-end;
+    justify-content:flex-end;
+    gap:3px;
+    margin-bottom: 5px;
 }
 
 .comment_update_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
+    font-size:10pt;
+    border:none;
+
 }
 
 .comment_delete_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
+    font-size:10pt;
+    border:none;
 }
 
 .comment_update_save_btn{
+    width:40px;
+    height:30px;
+    background-color: rgb(236, 237, 237) ;
+    border-radius: 5px;
     cursor: pointer;
-    background: none;
-    font-size:11pt;
-    border: none;
-    color: black;
-    display:none;
+    font-size:10pt;
+    display: none;
+    border:none;
 }
 
 /* 푸터 */
