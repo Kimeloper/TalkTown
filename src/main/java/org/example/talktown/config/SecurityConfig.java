@@ -51,6 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
                         .requestMatchers("/myPage").authenticated()
+                        .requestMatchers("/boards/{id}").authenticated()
                         .requestMatchers("/adminPage").hasRole("ADMIN")
                         .requestMatchers("/newNotice").hasRole("ADMIN")
                         .requestMatchers("/api/newBoard").hasAnyRole("ADMIN", "MEMBER")
@@ -63,9 +64,16 @@ public class SecurityConfig {
         http
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint((request, response, authException) -> {
-                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                            response.setContentType("application/json; charset=UTF-8");
-                            response.getWriter().write("{\"status\":\"401\",\"error\":\"Unauthorized\", \"message\":\"로그인을 해주세요.\"}");
+
+                            String uri = request.getRequestURI();
+
+                            if(uri.startsWith("/api")) {
+                                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                                response.setContentType("application/json; charset=UTF-8");
+                                response.getWriter().write("{\"status\":\"401\",\"error\":\"Unauthorized\", \"message\":\"로그인을 해주세요.\"}");
+                            }else{
+                                response.sendRedirect("/login");
+                            }
                         })
                 );
 
