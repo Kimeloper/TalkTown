@@ -1,6 +1,13 @@
 /* Board */
 .body{
    height: 100%;
+   margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 /* 헤더 */
@@ -98,7 +105,8 @@
     max-width: 1200px;
     height:auto;
     margin:auto;
-    padding-top:130px
+    padding-top:130px;
+    flex: 1;
 }
 
 .page_title{

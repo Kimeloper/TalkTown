@@ -7,82 +7,84 @@
     <link rel="stylesheet" href="/css/main.css";>
 </head>
 <body>
-    <header class="header">
-        <nav class="header_bar">
-            <a href="/main" class="logo"><img src="/img/talkTown.png"></a>
-            <div class="header_icons">
-                <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
-                <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
-                <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
-                    <button type="submit" class="logout" title="logout" id="logout_btn">
-                        <img src="/img/logout.png">
-                    </button>
-                </form>
-            </div>
-        </nav>
-        <nav class="menu_bar">
-            <ul>
-                <li><a href="/boards" >Community</a></li>
-                <li><a href="/notices">Notice</a></li>
-                <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <img src="/img/WELCOME TO TALKTOWN.png">
-        <div class="table_group">
-            <div class="community_table">
-                <div class="table_title">
-                    <span>Community</span>
-                    <a href="/boards">View All</a>
+    <div class="wrapper">
+        <header class="header">
+            <nav class="header_bar">
+                <a href="/main" class="logo"><img src="/img/talkTown.png"></a>
+                <div class="header_icons">
+                    <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
+                    <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
+                    <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
+                        <button type="submit" class="logout" title="logout" id="logout_btn">
+                            <img src="/img/logout.png">
+                        </button>
+                    </form>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="header_cell title">Title</th>
-                            <th class="header_cell author">Author</th>
-                            <th class="header_cell date">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="board : ${boards}">
-                            <td class="body_cell title"><a th:href="@{/boards/{id}(id=${board.id})}" th:text="${board.title}" class="title"></a></td>
-                            <td class="body_cell author" th:text="${board.author}"></td>
-                            <td class="body_cell date" th:text="|${#temporals.format(board.createdAt, 'yyyy-MM-dd')}|" ></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="notice_table">
-                <div class="table_title">
-                    <span>Notice</span>
-                    <a href="/notices"> View All</a>
+            </nav>
+            <nav class="menu_bar">
+                <ul>
+                    <li><a href="/boards" >Community</a></li>
+                    <li><a href="/notices">Notice</a></li>
+                    <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin">Admin</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <img src="/img/WELCOME TO TALKTOWN.png">
+            <div class="table_group">
+                <div class="community_table">
+                    <div class="table_title">
+                        <span>Community</span>
+                        <a href="/boards">View All</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="header_cell title">Title</th>
+                                <th class="header_cell author">Author</th>
+                                <th class="header_cell date">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="board : ${boards}">
+                                <td class="body_cell title"><a th:href="@{/boards/{id}(id=${board.id})}" th:text="${board.title}" class="title"></a></td>
+                                <td class="body_cell author" th:text="${board.author}"></td>
+                                <td class="body_cell date" th:text="|${#temporals.format(board.createdAt, 'yyyy-MM-dd')}|" ></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="header_cell title">Title</th>
-                            <th style="header_cell author">Author</th>
-                            <th style="header_cell date">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="notice : ${notices}">
-                            <td class="body_cell title"><a th:href="@{/notices/{id}(id=${notice.id})}" th:text="${notice.title}" class="title"></a></td>
-                            <td class="body_cell author" th:text="${notice.author}"></td>
-                            <td class="body_cell date" th:text="|${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}|"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="notice_table">
+                    <div class="table_title">
+                        <span>Notice</span>
+                        <a href="/notices"> View All</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="header_cell title">Title</th>
+                                <th style="header_cell author">Author</th>
+                                <th style="header_cell date">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="notice : ${notices}">
+                                <td class="body_cell title"><a th:href="@{/notices/{id}(id=${notice.id})}" th:text="${notice.title}" class="title"></a></td>
+                                <td class="body_cell author" th:text="${notice.author}"></td>
+                                <td class="body_cell date" th:text="|${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}|"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <footer>
+            <div class="footer">
+                <img src="/img/talkTown.png">
+                <p>© 2025 TalkTown. All rights reserved</p>
+            </div>
+        </footer>
     </div>
-    <footer>
-        <div class="footer">
-            <img src="/img/talkTown.png">
-            <p>© 2025 TalkTown. All rights reserved</p>
-        </div>
-    </footer>
 <script src="/js/logout.js"></script>
 </body>
 </html>

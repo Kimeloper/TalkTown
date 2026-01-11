@@ -7,45 +7,47 @@
     <link rel="stylesheet" href="/css/create.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="header_bar">
-            <a href="/main" class="logo"><img src="/img/talkTown.png"></a>
-            <div class="header_icons">
-                <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
-                <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
-                <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
-                    <button type="submit" class="logout" title="logout" id="logout_btn">
-                        <img src="/img/logout.png">
-                    </button>
-                </form>
-            </div>
-        </nav>
-        <nav class="menu_bar">
-              <ul>
-                  <li><a href="/boards" >Community</a></li>
-                  <li><a href="/notices">Notice</a></li>
-                  <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin">Admin</a></li>
-              </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <span class="page_title">Create Board</span>
-        <span class="write_message" >오늘은 어떤 주제의 글을 남겨볼까요?🚀</span>
-        <div class="board_list" enctype="multipart/form-data">
-            <input class="title" id="title" th:value = "${board.title}" type="text" placeholder="제목을 입력해주세요">
-            <textarea class="content" id="content" th:text = "${board.content}" rows="10" placeholder="내용을 입력해주세요"></textarea>
-            <div class="button_box">
-                <button type="button" id="create_btn">Post</button>
-                <button type="button" id="back_btn" onclick="location.href='/boards'">Back</button>
+    <div class="wrapper">
+        <header class="header">
+            <nav class="header_bar">
+                <a href="/main" class="logo"><img src="/img/talkTown.png"></a>
+                <div class="header_icons">
+                    <a href="/myPage" class="myPage" title ="myPage" sec:authorize="isAuthenticated()" ><img src="/img/myPage.png"></a>
+                    <a href="/login" class="login"title="login" sec:authorize="isAnonymous()"><img src ="/img/login.png"></a>
+                    <form method="post" class="logout_form" action="/api/logout" sec:authorize="isAuthenticated()">
+                        <button type="submit" class="logout" title="logout" id="logout_btn">
+                            <img src="/img/logout.png">
+                        </button>
+                    </form>
+                </div>
+            </nav>
+            <nav class="menu_bar">
+                  <ul>
+                      <li><a href="/boards" >Community</a></li>
+                      <li><a href="/notices">Notice</a></li>
+                      <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin">Admin</a></li>
+                  </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <span class="page_title">Create Board</span>
+            <span class="write_message" >오늘은 어떤 주제의 글을 남겨볼까요?🚀</span>
+            <div class="board_list" enctype="multipart/form-data">
+                <input class="title" id="title" th:value = "${board.title}" type="text" placeholder="제목을 입력해주세요">
+                <textarea class="content" id="content" th:text = "${board.content}" rows="10" placeholder="내용을 입력해주세요"></textarea>
+                <div class="button_box">
+                    <button type="button" id="create_btn">Post</button>
+                    <button type="button" id="back_btn" onclick="location.href='/boards'">Back</button>
+                </div>
             </div>
         </div>
+        <footer>
+            <div class="footer">
+                <img src="/img/talkTown.png">
+                <p>© 2025 TalkTown. All rights reserved</p>
+            </div>
+        </footer>
     </div>
-    <footer>
-        <div class="footer">
-            <img src="/img/talkTown.png">
-            <p>© 2025 TalkTown. All rights reserved</p>
-        </div>
-    </footer>
 <script src="/js/community.js"></script>
 <script src="/js/logout.js"></script>
 </body>

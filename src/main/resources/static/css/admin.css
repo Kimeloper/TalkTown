@@ -1,7 +1,13 @@
 .body{
    height: 100%;
+   margin: 0;
 }
 
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 /* 헤더 */
 
 .header{
@@ -99,6 +105,7 @@
     height:auto;
     margin:auto;
     padding-top:130px;
+    flex: 1;
 }
 
 .page_title{
