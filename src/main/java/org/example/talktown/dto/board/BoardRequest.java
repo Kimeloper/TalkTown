@@ -12,7 +12,6 @@ import org.example.talktown.domain.Board;
 @Setter
 public class BoardRequest {
 
-    private Long id;
     private String author;
     private String title;
     private String content;
