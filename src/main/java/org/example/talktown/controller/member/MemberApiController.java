@@ -19,8 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
@@ -107,22 +105,19 @@ public class MemberApiController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/member")
-    public String signup(@Valid @ModelAttribute MemberRequest memberRequest, Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("memberRequest", memberRequest);
-            return "signup";
-        }
+    @PostMapping("/api/members")
+    public ResponseEntity<?> signup(@Valid @RequestBody MemberRequest memberRequest) {
 
         boolean checkAuthor = memberService.checkAuthor(memberRequest.getAuthor());
         boolean checkEmail = memberService.checkEmail(memberRequest.getEmail());
 
-        if (checkAuthor == true || checkEmail == true) {
-            return "signup";
+        if (checkAuthor || checkEmail) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 회원입니다.");
         }
 
         memberService.save(memberRequest);
-        return "redirect:/login";
+
+        return ResponseEntity.ok().build();
     }
 
     @ResponseBody

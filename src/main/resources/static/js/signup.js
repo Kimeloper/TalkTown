@@ -112,3 +112,53 @@ document.getElementById("randomButton").addEventListener("click", function() {
             authorInput.dispatchEvent(new Event("blur"));
         });
 });
+
+//회원가입
+const signupButton = document.getElementById('submit_btn');
+
+if(signupButton){
+    signupButton.addEventListener('click', event => {
+        const email = document.getElementById('email').value.trim();
+        const author = document.getElementById('author').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if(!email && !author && !password){
+            alert("모든 항목을 입력해주세요.");
+            return;
+        }
+
+        if (!email) {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+        if (!author) {
+            alert("닉네임을 입력해주세요.");
+            return;
+        }
+        if (!password) {
+            alert("비밀번호를 입력해주세요.");
+            return;
+        }
+
+        fetch(`/api/members`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, author, password })
+        })
+       .then(response => {
+           if(response.ok){
+               alert("회원가입을 성공했습니다.")
+               location.replace('/login');
+           }else if(response.status === 409) {
+               alert('이미 존재하는 회원입니다.');
+           }else{
+               alert('회원가입을 실패했습니다.');
+               return;
+           }
+       })
+        .catch(error => {
+            console.error('회원가입 중 오류 발생:', error);
+            alert('회원가입을 실패했습니다.');
+        });
+    });
+}

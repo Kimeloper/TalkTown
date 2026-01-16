@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
+                        .requestMatchers("/api/members", "/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
                         .requestMatchers("/myPage").authenticated()
                         .requestMatchers("/boards/{id}").authenticated()
                         .requestMatchers("/adminPage").hasRole("ADMIN")
