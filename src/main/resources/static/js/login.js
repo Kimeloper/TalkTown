@@ -5,6 +5,11 @@ if(loginButton){
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
+        if(!email && !password){
+            alert("이메일과 비밀번호를 입력해주세요.");
+            return;
+        }
+
         if(!email){
             alert("이메일을 입력해주세요.")
             return;
