@@ -118,6 +118,7 @@ const signupButton = document.getElementById('submit_btn');
 
 if(signupButton){
     signupButton.addEventListener('click', event => {
+
         const email = document.getElementById('email').value.trim();
         const author = document.getElementById('author').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -125,17 +126,22 @@ if(signupButton){
         if(!email && !author && !password){
             alert("모든 항목을 입력해주세요.");
             return;
-        }
-
-        if (!email) {
+        }else if(!email && !password){
+            alert("이메일과 비밀번호를 입력해주세요.");
+            return;
+        }else if(!email && !author){
+            alert("이메일과 닉네임을 입력해주세요.");
+            return;
+        }else if(!author && !password){
+            alert("닉네임과 비밀번호를 입력해주세요.");
+            return;
+        }else if(!email){
             alert("이메일을 입력해주세요.");
             return;
-        }
-        if (!author) {
+        }else if (!author) {
             alert("닉네임을 입력해주세요.");
             return;
-        }
-        if (!password) {
+        }else if (!password) {
             alert("비밀번호를 입력해주세요.");
             return;
         }

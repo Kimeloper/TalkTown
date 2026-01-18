@@ -8,14 +8,10 @@ if(loginButton){
         if(!email && !password){
             alert("이메일과 비밀번호를 입력해주세요.");
             return;
-        }
-
-        if(!email){
+        }else if(!email){
             alert("이메일을 입력해주세요.")
             return;
-        }
-
-        if(!password){
+        }else if(!password){
             alert("비밀번호를 입력해주세요.")
             return;
         }
