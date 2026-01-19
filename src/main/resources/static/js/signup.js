@@ -146,6 +146,18 @@ if(signupButton){
             return;
         }
 
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const authorPattern = /^[가-힣a-zA-Z]{2,8}$/;
+        const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{6,12}$/;
+
+        if(!emailPattern.test(email)){
+            return;
+        }else if(!authorPattern.test(author)){
+            return;
+        }else if(!passwordPattern.test(password)){
+            return;
+        }
+
         fetch(`/api/members`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
