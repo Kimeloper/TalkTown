@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/members", "/api/login",  "/api/logout", "/login", "/signup", "/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
+                        .requestMatchers("/api/members", "/api/login",  "/api/logout", "/login", "/signup", "/api/nickname","/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
                         .requestMatchers("/myPage").authenticated()
                         .requestMatchers("/boards/{id}").authenticated()
                         .requestMatchers("/adminPage").hasRole("ADMIN")
@@ -57,7 +57,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/newBoard").hasAnyRole("ADMIN", "MEMBER")
                         .requestMatchers("/api/notices").hasRole("ADMIN")
                         .requestMatchers("/admin").hasRole("ADMIN")
-                        .requestMatchers("/api/nickname").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtFilter(jwtUtil, memberRepository),UsernamePasswordAuthenticationFilter.class);
 
