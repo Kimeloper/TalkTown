@@ -23,7 +23,6 @@
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
   <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/jquery-%230769AD.svg?&style=for-the-badge&logo=jquery&logoColor=white" />
-  <img src="https://img.shields.io/badge/thymeleaf-%23005F0F.svg?&style=for-the-badge&logo=thymeleaf&logoColor=white" />
 </p>
 
 ### Backend
@@ -32,6 +31,7 @@
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
   <img src="https://img.shields.io/badge/Spring_data_jpa-6DB33F?style=for-the-badge&logo=&logoColor=white" />
   <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=SpringSecurity&logoColor=white"/>
+  <img src="https://img.shields.io/badge/thymeleaf-%23005F0F.svg?&style=for-the-badge&logo=thymeleaf&logoColor=white" />
 </p>
 
 ### DB
@@ -80,3 +80,4 @@
    - 조회수
    - 검색/페이징
      
+
