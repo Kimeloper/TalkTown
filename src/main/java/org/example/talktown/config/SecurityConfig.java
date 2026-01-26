@@ -50,13 +50,8 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/members", "/api/login",  "/api/logout", "/login", "/signup", "/api/nickname","/member", "/main", "/boards", "/notices", "/checkEmail",  "/checkAuthor").permitAll()
-                        .requestMatchers("/myPage").authenticated()
-                        .requestMatchers("/boards/{id}").authenticated()
-                        .requestMatchers("/adminPage").hasRole("ADMIN")
-                        .requestMatchers("/newNotice").hasRole("ADMIN")
+                        .requestMatchers("/adminPage", "/newNotice", "/api/notices","/admin").hasRole("ADMIN")
                         .requestMatchers("/api/newBoard").hasAnyRole("ADMIN", "MEMBER")
-                        .requestMatchers("/api/notices").hasRole("ADMIN")
-                        .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtFilter(jwtUtil, memberRepository),UsernamePasswordAuthenticationFilter.class);
 
