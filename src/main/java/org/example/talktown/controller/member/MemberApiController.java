@@ -142,11 +142,9 @@ public class MemberApiController {
     @PostMapping("/deleteMember")
     public ResponseEntity<Void> deleteMember(@RequestParam("password") String password, @AuthenticationPrincipal Member member, HttpServletResponse httpServletResponse) {
 
-        if (!bCryptPasswordEncoder.matches(password, member.getPassword())) {
+        if (!memberService.deleteMember(member, password)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-
-        memberRepository.delete(member);
 
         ResponseCookie deleteAccess = ResponseCookie.from("accessToken", "")
                 .path("/")
