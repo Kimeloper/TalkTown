@@ -43,7 +43,7 @@ public class MemberService {
     }
 
     //회원 탈퇴
-    public boolean deleteMemberIfPasswordIsCorrect(Member member, String password){
+    public boolean deleteMember(Member member, String password){
         if(bCryptPasswordEncoder.matches(password, member.getPassword())){
             memberRepository.delete(member);
             return true;
