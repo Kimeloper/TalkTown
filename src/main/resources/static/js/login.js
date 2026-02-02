@@ -2,6 +2,8 @@ const loginButton = document.getElementById('submit_btn');
 
 if(loginButton){
     loginButton.addEventListener('click', event => {
+        event.preventDefault();
+
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
 
