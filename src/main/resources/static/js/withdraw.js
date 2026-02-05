@@ -15,6 +15,12 @@ if (deleteAccountButton) {
 
     okButton.addEventListener('click', event => {
         const password = document.getElementById('checkPassword').value;
+        const isConfirm = confirm("정말 탈퇴를 하시겠습니까?\n(탈퇴를 진행하면 되돌릴 수 없습니다.)");
+
+        if(!isConfirm){
+            return;
+        }
+
         fetch(`/deleteMember`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
