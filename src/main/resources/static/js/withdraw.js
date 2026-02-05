@@ -17,8 +17,7 @@ if (deleteAccountButton) {
         const password = document.getElementById('checkPassword').value;
         fetch(`/deleteMember`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded',
-            },
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ password })
         })
         .then(response => {
