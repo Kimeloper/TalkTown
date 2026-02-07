@@ -30,9 +30,9 @@ if(loginButton){
             })
             .then(response => {
                 if(response.ok){
-                    location.replace(`/main`);
+                    location.replace('/main');
                 }else{
-                    alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+                    alert('로그인을 실패했습니다.');
                     return;
                 }
             })
