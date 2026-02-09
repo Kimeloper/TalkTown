@@ -51,7 +51,12 @@ public class MemberService {
             return false;
         }
     }
-    
+
+    //멤버 강제 탈퇴
+    public void delete(long id){
+        memberRepository.deleteById(id);
+    }
+
     // 멤버 검색
     public Page<Member> findAllMembers(Pageable pageable){
         return memberRepository.findAll(pageable);
@@ -69,4 +74,6 @@ public class MemberService {
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email).orElseThrow(()-> new IllegalArgumentException("email을 찾을 수 없습니다."));
     }
+
+
 }

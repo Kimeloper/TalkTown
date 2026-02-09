@@ -1,12 +1,12 @@
 .body{
-   height: 100%;
-   margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 /* 헤더 */
 
@@ -138,9 +138,9 @@
 }
 
 .table thead th{
-  border-bottom: 1px solid rgb(199, 199, 199);
-  border-top: 2px solid black;
-  padding:10px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    border-top: 2px solid black;
+    padding:10px;
 }
 
  .table tbody td{
@@ -152,24 +152,40 @@
 
 /* 페이징 */
 .pagination{
-  width: 90%;
-  margin: 10px auto 50px auto; /*상 우 하 좌*/
-  display: flex;
-  justify-content:
-  center;
-  gap: 15px;
-  font-size:14pt;
-  font-weight: bold
+    width: 90%;
+    margin: 10px auto 50px auto; /*상 우 하 좌*/
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 14pt;
+    font-weight: bold
 }
 
 .pagination a{
-  text-decoration:none;
-  color: rgb(187, 187, 187);
+    text-decoration: none;
+    color: rgb(187, 187, 187);
 }
 
 .pagination a:hover{
-  color: rgb(150, 150, 150);
-  cursor:pointer;
+    color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+
+/*강제 탈퇴 버튼*/
+.deleteMember_btn{
+    width: 50px;
+    height: 30px;
+    border: none;
+    background-color: rgb(68, 114,196);
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.deleteMember_btn:hover{
+    color:white;
+    background-color:rgb(83, 142, 243);
+    cursor:pointer;
 }
 
 

@@ -7,10 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,5 +38,12 @@ public class AdminController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         return "admin";
+    }
+    
+    @DeleteMapping("/admin/{id}")
+    public ResponseEntity<Void> deleteMember(@PathVariable(value = "id") long id) {
+        memberService.delete(id);
+        System.out.println(id + "번째 회원 삭제 성공");
+        return ResponseEntity.ok().build();
     }
 }
