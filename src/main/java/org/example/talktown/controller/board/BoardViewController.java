@@ -23,14 +23,14 @@ public class BoardViewController {
     private final BoardService boardService;
 
     @GetMapping("/boards")
-    public String getBoards(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword){
+    public String getBoards(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword, @RequestParam(value = "type", defaultValue = "title") String type){
 
         Page<Board> boards = null;
 
         if(keyword == null || keyword.isBlank()){ // 검색 안했을때
             boards = boardService.findAll(pageable);
         }else{ // 검색 했을때
-            boards = boardService.searchBoard(keyword, pageable);
+            boards = boardService.searchBoard(type,keyword, pageable);
         }
 
         int nowPage = boards.getPageable().getPageNumber() + 1;

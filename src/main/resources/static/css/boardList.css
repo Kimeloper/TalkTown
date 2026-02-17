@@ -127,6 +127,12 @@
     text-align:right;
 }
 
+.search_type{
+    height:35px;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+}
+
 .search input{
     height:35px;
     border: 1px solid rgb(170, 170, 170);

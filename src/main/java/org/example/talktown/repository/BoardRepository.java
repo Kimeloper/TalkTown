@@ -14,6 +14,8 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 //    @EntityGraph(attributePaths = {"member"})
     Page<Board> findByTitleContaining(String keyword, Pageable pageable);
+
+    Page<Board> findByAuthorContaining(String author, Pageable pageable);
 //    @EntityGraph(attributePaths = {"member"})
 //    @Query("select b from Board b where b.title like %:keyword%")
 //    Page<Board> findByTitleContainingWithMember(@Param("keyword") String keyword, Pageable pageable);

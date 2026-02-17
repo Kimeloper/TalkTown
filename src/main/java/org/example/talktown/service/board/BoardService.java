@@ -39,8 +39,14 @@ public class BoardService {
         return boardRepository.findTop5ByOrderByCreatedAtDescIdDesc();
     }
 
-    public Page<Board> searchBoard(String keyword, Pageable pageable){
-        return boardRepository.findByTitleContaining(keyword,pageable);
+    public Page<Board> searchBoard(String type, String keyword, Pageable pageable){
+        if(type.equals("title")){
+            return boardRepository.findByTitleContaining(keyword, pageable);
+        }else if(type.equals("author")){
+            return boardRepository.findByAuthorContaining(keyword, pageable);
+        }else{
+            return boardRepository.findAll(pageable);
+        }
     }
 
     public void delete(long id){
