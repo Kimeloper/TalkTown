@@ -12,6 +12,8 @@ import java.util.List;
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
     Page<Notice> findByTitleContaining(String keyword, Pageable pageable);
 
+    Page<Notice> findByAuthorContaining(String author, Pageable pageable);
+
     //메인페이지용
     List<Notice> findTop5ByOrderByCreatedAtDescIdDesc();
 }

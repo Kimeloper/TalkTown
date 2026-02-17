@@ -32,8 +32,14 @@ public class NoticeService {
     }
 
     //search
-    public  Page<Notice> searchNotice(String keyword, Pageable pageable){
-        return noticeRepository.findByTitleContaining(keyword, pageable);
+    public  Page<Notice> searchNotice(String type, String keyword, Pageable pageable){
+        if(type.equals("title")){
+            return noticeRepository.findByTitleContaining(keyword,pageable);
+        }else if(type.equals("author")){
+            return noticeRepository.findByAuthorContaining(keyword, pageable);
+        }else{
+            return noticeRepository.findAll(pageable);
+        }
     }
 
     //findById

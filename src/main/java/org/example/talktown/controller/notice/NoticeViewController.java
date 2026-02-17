@@ -25,13 +25,13 @@ public class NoticeViewController {
     private final NoticeService noticeService;
 
     @GetMapping("/notices")
-    public String getNotices(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "")String keyword){
+    public String getNotices(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "")String keyword, @RequestParam(value = "type", defaultValue = "title") String type){
 
         Page<Notice> notices = null;
         if(keyword == null){
             notices = noticeService.findAll(pageable);
         }else{
-            notices = noticeService.searchNotice(keyword, pageable);
+            notices = noticeService.searchNotice(type, keyword, pageable);
         }
 
         int nowPage = notices.getPageable().getPageNumber() + 1;
