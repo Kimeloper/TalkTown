@@ -44,6 +44,8 @@ public class BoardService {
             return boardRepository.findByTitleContaining(keyword, pageable);
         }else if(type.equals("author")){
             return boardRepository.findByAuthorContaining(keyword, pageable);
+        }else if(type.equals("content")){
+            return boardRepository.findByContentContaining(keyword, pageable);
         }else{
             return boardRepository.findAll(pageable);
         }
