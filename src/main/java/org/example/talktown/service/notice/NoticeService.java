@@ -37,6 +37,8 @@ public class NoticeService {
             return noticeRepository.findByTitleContaining(keyword,pageable);
         }else if(type.equals("author")){
             return noticeRepository.findByAuthorContaining(keyword, pageable);
+        }else if(type.equals("content")){
+            return noticeRepository.findByContentContaining(keyword, pageable);
         }else{
             return noticeRepository.findAll(pageable);
         }

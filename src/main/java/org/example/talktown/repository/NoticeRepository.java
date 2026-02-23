@@ -1,5 +1,6 @@
 package org.example.talktown.repository;
 
+import org.example.talktown.domain.Board;
 import org.example.talktown.domain.Notice;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,8 @@ public interface NoticeRepository extends JpaRepository<Notice, Long> {
     Page<Notice> findByTitleContaining(String keyword, Pageable pageable);
 
     Page<Notice> findByAuthorContaining(String author, Pageable pageable);
+
+    Page<Notice> findByContentContaining(String keyword, Pageable pageable);
 
     //메인페이지용
     List<Notice> findTop5ByOrderByCreatedAtDescIdDesc();
