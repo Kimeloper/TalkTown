@@ -41,6 +41,7 @@ public class BoardViewController {
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+        model.addAttribute("type", type);
 
         return "boardList";
     }
