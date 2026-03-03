@@ -42,6 +42,7 @@ public class BoardViewController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
 
         return "boardList";
     }

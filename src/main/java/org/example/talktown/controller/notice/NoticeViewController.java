@@ -43,6 +43,7 @@ public class NoticeViewController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
 
         return "noticeList";
     }
