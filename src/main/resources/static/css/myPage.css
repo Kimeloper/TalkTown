@@ -114,6 +114,12 @@
     height:auto;
 }
 
+.member_information h1{
+    border-bottom:2px solid black;
+    padding:10px;
+    font-weight: bold;
+}
+
 .information_form{
     font-size:15pt;
     font-weight:bold;
@@ -142,9 +148,41 @@
     font-weight: normal;
  }
 
- .checkPasswordForm{
-
+.checkPasswordForm{
+    height:auto;
+    display:none;
+    margin-top:10px
  }
+
+.checkPasswordForm input{
+    width:300px;
+    height:40px;
+    border: 2px solid rgb(193,193,193);
+    border-radius: 5px;
+    display: left;
+}
+.checkPasswordForm okDelete_btn{
+    width:70px;
+    height:40px;
+    background-color:rgb(190, 190, 190);
+    color: white;
+    border-radius: 5px; border:none;
+    font-weight: bold;
+    cursor:pointer;
+    margin-left: 3px;
+}
+
+.checkPasswordForm cancel_btn{
+    width:70px;
+    height:40px;
+    background-color:rgb(190, 190, 190);
+    color: white;
+    border-radius: 5px;
+    border:none;
+    font-weight: bold;
+    cursor:pointer;
+    margin-left: 3px;
+}
 
 /* deleteAccountButton*/
 .deleteAccount{
