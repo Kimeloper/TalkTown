@@ -72,7 +72,7 @@ public class MemberService {
     }
 
     public Member findByEmail(String email) {
-        return memberRepository.findByEmail(email).orElseThrow(()-> new IllegalArgumentException("email을 찾을 수 없습니다."));
+        return memberRepository.findByEmail(email).orElse(null);
     }
 
 
