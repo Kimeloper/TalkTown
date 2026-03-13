@@ -1,6 +1,7 @@
 package org.example.talktown.service.member;
 
 import lombok.RequiredArgsConstructor;
+import org.example.talktown.domain.Board;
 import org.example.talktown.domain.Member;
 
 import org.example.talktown.domain.Role;
@@ -62,8 +63,14 @@ public class MemberService {
         return memberRepository.findAll(pageable);
     }
 
-    public Page<Member> searchMember(String keyword, Pageable pageable){
-        return memberRepository.findByAuthorContaining(keyword, pageable);
+    public Page<Member> searchMember(String type, String keyword, Pageable pageable){
+        if(type.equals("author")){
+            return memberRepository.findByAuthorContaining(keyword, pageable);
+        }else if(type.equals("email")){
+            return memberRepository.findByEmailContaining(keyword, pageable);
+        }else{
+            return memberRepository.findAll(pageable);
+        }
     }
     
     //JWT 메서드

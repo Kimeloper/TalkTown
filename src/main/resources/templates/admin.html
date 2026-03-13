@@ -33,7 +33,11 @@
             <span class="page_title">ADMIN PAGE</span>
             <div class="search">
                 <form th:action="@{/admin}" method="get">
-                    <input type="text" name="keyword" placeholder="search">
+                    <select name="type" class="search_type">
+                        <option value="author" th:selected="${type == 'author'}">작성자</option>
+                        <option value="email" th:selected="${type == 'email'}">이메일</option>
+                    </select>
+                    <input type="text" name="keyword" placeholder="search" th:value="${keyword}">
                 </form>
             </div>
             <table class="table">

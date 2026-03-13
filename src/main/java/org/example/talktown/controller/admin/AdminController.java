@@ -19,14 +19,14 @@ public class AdminController {
     private final MemberService memberService;
 
     @GetMapping("/admin")
-    public String admin(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword){
+    public String admin(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword, @RequestParam(value = "type", defaultValue = "author") String type){
 
         Page<Member> members = null;
 
         if(keyword == null){//검색 안했을때
             members = memberService.findAllMembers(pageable);
         }else{//검색 했을때
-            members = memberService.searchMember(keyword, pageable);
+            members = memberService.searchMember(type, keyword, pageable);
         }
 
         int nowPage = members.getPageable().getPageNumber() + 1;
@@ -37,6 +37,9 @@ public class AdminController {
         model.addAttribute("nowPage", nowPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+
         return "admin";
     }
     
