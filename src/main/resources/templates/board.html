@@ -47,7 +47,7 @@
                 </div>
                 <!--comment-->
                 <div class="comments">
-                    <span class="comment_title">COMMENTS</span>
+                    <span class="comment_title" th:text="'COMMENTS [' + ${commentCount} + ']'"></span>
                     <textarea id="content"></textarea>
                     <div class="write_button">
                         <button type="button" class="comment_create_btn" id="comment_create_btn">Send</button>

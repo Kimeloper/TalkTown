@@ -3,6 +3,7 @@ package org.example.talktown.controller.board;
 import lombok.RequiredArgsConstructor;
 import org.example.talktown.domain.Board;
 import org.example.talktown.dto.board.BoardViewResponse;
+import org.example.talktown.repository.CommentRepository;
 import org.example.talktown.service.board.BoardService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ import java.util.List;
 public class BoardViewController {
 
     private final BoardService boardService;
+    private final CommentRepository commentRepository;
 
     @GetMapping("/boards")
     public String getBoards(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "keyword", defaultValue = "") String keyword, @RequestParam(value = "type", defaultValue = "title") String type){
@@ -50,7 +52,11 @@ public class BoardViewController {
     @GetMapping("/boards/{id}")
     public String getBoard(Model model, @PathVariable(value = "id")long id){
         Board board = boardService.findById(id);
+        long commentCount = commentRepository.countByBoardId(id);
+
         model.addAttribute("board", new BoardViewResponse(board));
+        model.addAttribute("commentCount", commentCount);
+
         return "board";
     }
 
