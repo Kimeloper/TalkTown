@@ -53,9 +53,11 @@ public class BoardViewController {
     public String getBoard(Model model, @PathVariable(value = "id")long id){
         Board board = boardService.findById(id);
         long commentCount = commentRepository.countByBoardId(id);
+        List<Board> boards = boardService.getFiveBoards();
 
         model.addAttribute("board", new BoardViewResponse(board));
         model.addAttribute("commentCount", commentCount);
+        model.addAttribute("boards", boards);
 
         return "board";
     }

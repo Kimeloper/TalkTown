@@ -68,6 +68,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="board_list">
+                        <table class="table">
+                            <tbody>
+                                <tr th:each="board : ${boards}">
+                                    <td class="body_cell title"><a th:href="@{/boards/{id}(id=${board.id})}" th:text="${board.title}" class="title"></a></td>
+                                    <td class="body_cell author" th:text="${board.author}"></td>
+                                    <td class="body_cell date" th:text="|${#temporals.format(board.createdAt, 'yyyy-MM-dd')}|"></td>
+                                    <td class="body_cell views" th:text="${board.views}" ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

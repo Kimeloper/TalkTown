@@ -204,6 +204,56 @@
     cursor:pointer;
 }
 
+.board_list{
+    padding-top:50px;
+}
+
+.table{
+    width:100%;
+    margin:10px auto;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.table tbody td{
+    border-bottom:1px solid rgb(199, 199, 199);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    vertical-align:middle;
+}
+
+
+.body_cell.title{
+    width:70%;
+}
+
+.body_cell.author{
+    width:10%;
+}
+
+.body_cell.date{
+    width:15%;
+}
+
+.body_cell.views{
+    width:5%;
+}
+
+.body_cell.title a{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.body_cell.title:hover a{
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+
 /* 댓글 */
 .comments{
     height:auto;
