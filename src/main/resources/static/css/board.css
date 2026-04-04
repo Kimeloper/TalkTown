@@ -203,9 +203,14 @@
     background-color:rgb(83, 142, 243);
     cursor:pointer;
 }
-
 .board_list{
-    padding-top:50px;
+    padding-top:20px;
+}
+
+.board_list span{
+    font-weight: bold;
+    font-size: 15pt;
+    padding-left:20px;
 }
 
 .table{
