@@ -207,10 +207,24 @@
     padding-top:20px;
 }
 
+.board_list button{
+    border:none;
+    background:none;
+}
+
+.board_list button:hover{
+    cursor: pointer;
+}
+
+.board_list button img{
+    width:25px;
+    height:25px;
+    padding-bottom:8px;
+}
+
 .board_list span{
     font-weight: bold;
     font-size: 15pt;
-    padding-left:20px;
 }
 
 .table{
