@@ -51,7 +51,10 @@ public class NoticeViewController {
     @GetMapping("/notices/{id}")
     public String getNotice(Model model, @PathVariable(value = "id")long id){
         Notice notice = noticeService.findById(id);
+        List<Notice> notices = noticeService.getFiveBoards();
+
         model.addAttribute("notice", new NoticeViewResponse(notice));
+        model.addAttribute("notices", notices);
         return "notice";
     }
 

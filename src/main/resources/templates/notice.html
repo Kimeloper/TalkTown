@@ -46,6 +46,22 @@
                     <button type="button" id="delete_btn" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" >Delete</button>
                     <button type="button" id="back_btn" onclick="location.href='/notices'" style="">Back</button>
                 </div>
+                <div class="notice_list">
+                    <button type="button" onclick="location.href='/notices'">
+                        <img src="/img/arrowLeft.png">
+                    </button>
+                    <span>공지사항 목록</span>
+                    <table class="table">
+                        <tbody>
+                        <tr th:each="notice : ${notices}">
+                            <td class="body_cell title"><a th:href="@{/notices/{id}(id=${notice.id})}" th:text="${notice.title}" class="title"></a></td>
+                            <td class="body_cell author" th:text="${notice.author}"></td>
+                            <td class="body_cell date" th:text="|${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}|"></td>
+                            <td class="body_cell views" th:text="${notice.views}" ></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <footer>
