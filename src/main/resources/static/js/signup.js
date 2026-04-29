@@ -150,11 +150,18 @@ if(signupButton){
         const authorPattern = /^[가-힣a-zA-Z]{2,8}$/;
         const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{6,12}$/;
 
-        if(!emailPattern.test(email)){
+        if(!emailPattern.test(email)) {
+            alert("잘못된 이메일 형식입니다.");
             return;
-        }else if(!authorPattern.test(author)){
+        }
+
+        if(!authorPattern.test(author)) {
+            alert("잘못된 닉네임 형식입니다.");
             return;
-        }else if(!passwordPattern.test(password)){
+        }
+
+        if(!passwordPattern.test(password)) {
+            alert("잘못된 비밀번호 형식입니다.");
             return;
         }
 
