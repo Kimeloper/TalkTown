@@ -123,26 +123,7 @@ if(signupButton){
         const author = document.getElementById('author').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        if(!email && !author && !password){
-            alert("모든 항목을 입력해주세요.");
-            return;
-        }else if(!email && !password){
-            alert("이메일과 비밀번호를 입력해주세요.");
-            return;
-        }else if(!email && !author){
-            alert("이메일과 닉네임을 입력해주세요.");
-            return;
-        }else if(!author && !password){
-            alert("닉네임과 비밀번호를 입력해주세요.");
-            return;
-        }else if(!email){
-            alert("이메일을 입력해주세요.");
-            return;
-        }else if (!author) {
-            alert("닉네임을 입력해주세요.");
-            return;
-        }else if (!password) {
-            alert("비밀번호를 입력해주세요.");
+        if(!email || !author || !password){
             return;
         }
 
@@ -150,20 +131,9 @@ if(signupButton){
         const authorPattern = /^[가-힣a-zA-Z]{2,8}$/;
         const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\W)(?=\S+$).{6,12}$/;
 
-        if(!emailPattern.test(email)) {
-            alert("잘못된 이메일 형식입니다.");
+        if(!emailPattern.test(email)||!authorPattern.test(author)||!passwordPattern.test(password)) {
             return;
-        }
-
-        if(!authorPattern.test(author)) {
-            alert("잘못된 닉네임 형식입니다.");
-            return;
-        }
-
-        if(!passwordPattern.test(password)) {
-            alert("잘못된 비밀번호 형식입니다.");
-            return;
-        }
+       }
 
         fetch(`/api/members`, {
             method: 'POST',
