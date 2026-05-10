@@ -144,8 +144,8 @@ if(signupButton){
            if(response.ok){
                alert("회원가입을 성공했습니다.")
                location.replace('/login');
-           }else if(response.status === 409) {
-               alert('이미 존재하는 회원입니다.');
+           }else if(response.status == 409) {
+               return;
            }else{
                alert('회원가입을 실패했습니다.');
                return;
